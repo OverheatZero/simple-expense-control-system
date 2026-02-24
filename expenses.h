@@ -1,24 +1,44 @@
-//
-// Created by matheus on 20/02/26.
-//
+    //
+    // Created by matheus on 20/02/26.
+    //
 
-#ifndef EXPENSES_H
-#define EXPENSES_H
-#include <string>
+    #ifndef EXPENSES_H
+    #define EXPENSES_H
+    #include <string>
 
 
-class Expenses {
-public:
-    Expenses(double value, std::string description);
-    double getValue();
-    void setValue(double value);
+    enum class ExpenseStatus {
+        ACTIVE,
+        PAID
+    };
 
-    std::string getDescription();
-    void setDescription(std::string description);
+    class Expenses {
+    public:
+        Expenses(double value, std::string description, int expenseId);
+        double getValue();
+        void setValue(double value);
 
-private:
-    double value;
-    std::string description;
-};
+        std::string getDescription();
+        void setDescription(std::string description);
 
-#endif //EXPENSES_H
+        ExpenseStatus getStatus();
+        void setStatus(ExpenseStatus status);
+
+        int getExpenseId();
+        void setExpenseId(int expenseId);
+
+        static void incrementNextId();
+        static int getNextId();
+
+        static Expenses createExpense(double valor, std::string descricao);
+
+
+    private:
+        double value;
+        std::string description;
+        ExpenseStatus status;
+        int expenseId;
+        static int nextId;
+    };
+
+    #endif //EXPENSES_H
