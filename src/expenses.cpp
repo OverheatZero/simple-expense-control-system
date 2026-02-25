@@ -2,7 +2,7 @@
 // Created by matheus on 20/02/26.
 //
 
-#include "../expenses.h"
+#include "../include/expenses.h"
 
 #include <iostream>
 
