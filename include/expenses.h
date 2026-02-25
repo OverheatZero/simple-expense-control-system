@@ -15,16 +15,19 @@
     class Expenses {
     public:
         Expenses(double value, std::string description, int expenseId);
-        double getValue();
+
+        double getValue() const;
         void setValue(double value);
 
         std::string getDescription();
         void setDescription(std::string description);
 
-        ExpenseStatus getStatus();
+        ExpenseStatus getStatus() const;
         void setStatus(ExpenseStatus status);
+        std::string toStringStatus();
+        void changeExpenseStatus();
 
-        int getExpenseId();
+        int getExpenseId() const;
         void setExpenseId(int expenseId);
 
         static void incrementNextId();
