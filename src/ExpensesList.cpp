@@ -43,7 +43,7 @@ void ExpensesList::listExpenses() {
     }
     for (int i = 0; i < vectorExpenses.size(); i++) {
         std::cout <<"Id: " << vectorExpenses[i].getExpenseId() <<" - " << vectorExpenses[i].getDescription()
-        << " - R$" << vectorExpenses[i].getValue() << "- Status: " << vectorExpenses[i].toStringStatus() << "\n";
+        << " - R$" << vectorExpenses[i].getValue() << " - Status: " << vectorExpenses[i].toStringStatus() << "\n";
     }
     int totalExpenses = getTotalExpenses();
     double valorTotal = getTotalValue();
