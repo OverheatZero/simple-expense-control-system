@@ -8,6 +8,8 @@ add_executable(simple_expense_control_system
         src/main.cpp
         src/expenses.cpp
         src/ExpensesList.cpp
+        src/UserInputTreatment.cpp
+        include/UserInputTreatment.h
 )
 
 target_include_directories(simple_expense_control_system PRIVATE include)

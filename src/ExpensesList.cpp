@@ -8,6 +8,8 @@
 #include <list>
 #include <bits/locale_facets_nonio.h>
 
+#include "UserInputTreatment.h"
+
 
 int ExpensesList::getTotalExpenses() {
     int size = 0;
@@ -63,26 +65,25 @@ void ExpensesList::removeExpense(int expenseId) {
 void ExpensesList::editExpense(int expenseId) {
     double valor;
     std::string descricao;
-    char confirm;
     for (int i = 0; i < vectorExpenses.size(); i++) {
         if (vectorExpenses[i].getExpenseId() == expenseId) {
             valor = vectorExpenses[i].getValue();
             descricao = vectorExpenses[i].getDescription();
             std::cout << "Valor atual da Despesa: R$" << valor << "\n";
             std::cout << "Deseja alterar o valor da despesa? s/n\n";
-            std::cin >> confirm;
+            char confirm = UserInputTreatment::charInputTreatment();
             if (confirm == 's') {
                 std::cout << "Digite o novo valor da despesa: ";
-                std::cin >> valor;
+               valor = UserInputTreatment::doubleInputTreatment();
                 vectorExpenses[i].setValue(valor);
                 std::cout << "Valor da despesa alterado com sucesso.\n\n";
             }
             std::cout << "Descrição atual da despesa: " << descricao << "\n";
             std::cout << "Deseja alterar a descrição da despesa? s/n\n";
             std::cin >> confirm;
-            if (confirm == 's') {
+            if (confirm == 's' || confirm == 'S') {
                 std::cout << "Digite a nova descrição da despesa: ";
-                std::cin >> descricao;
+                descricao = UserInputTreatment::stringInputTreatment();
                 vectorExpenses[i].setDescription(descricao);
                 std::cout << "Descrição da despesa alterada com sucesso.\n\n";
             }
